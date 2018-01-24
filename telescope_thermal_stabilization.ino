@@ -1,7 +1,7 @@
 //**************************************************************//
 //  Name    : TELESCOPE THERMAL STABILIZATION
 //  Author  : Mik™ <miksrv.ru> <miksoft.tm@gmail.com>
-//  Version : 1.0.0 (23 Jan 2018)
+//  Version : 1.0.1 (24 Jan 2018)
 //  Notes   : Telescope thermal stabilization controller
 //**************************************************************//
 
@@ -77,8 +77,8 @@ void get_temperature() {
     Serial.println("DONE");
   #endif
   
-  temp1 = tempSensors.getTempCByIndex(0);
-  temp2 = tempSensors.getTempCByIndex(1);
+  temp1 = sensors.getTempCByIndex(0);
+  temp2 = sensors.getTempCByIndex(1);
   delta = abs(temp1 - temp2);
 } // void get_temperature()
 
