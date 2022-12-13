@@ -1,8 +1,8 @@
 //**************************************************************//
 //  Name    : TELESCOPE THERMAL STABILIZATION
-//  Author  : Mik™ <miksrv.ru> <miksoft.tm@gmail.com>
+//  Author  : Mik™ <miksoft.pro> <miksoft.tm@gmail.com>
 //  Version : 1.0.1 (24 Jan 2018)
-//  Notes   : Telescope thermal stabilization controller
+//  Notes   : Telescope Thermal Stabilization Controller
 //**************************************************************//
 
 // LCD SCREEN TEMPLATE:
@@ -15,7 +15,7 @@
 // Connecting Libraries
 #include <OneWire.h>            // DS18B20 temperature sensor
 #include <DallasTemperature.h>  // DS18B20 temperature sensor
-#include <LiquidCrystal.h>      // 16x2 LCD 
+#include <LiquidCrystal.h>      // 16x2 LCD
 
 // --- /CONFIGURATION/ ---
 #define DEBUG      // Debug mode (messages are displayed in a serial port)
@@ -26,7 +26,7 @@
 OneWire oneWire(PIN_TEMP);
 DallasTemperature sensors(&oneWire);
 
-// Инициализируем объект-экран, передаём использованные 
+// Инициализируем объект-экран, передаём использованные
 // для подключения контакты на Arduino в порядке:
 // RS, E, DB4, DB5, DB6, DB7
 LiquidCrystal lcd(4, 5, 10, 11, 12, 13);
@@ -41,9 +41,9 @@ uint8_t degree[8] = {
   B00000,
   B00000,
   B00000,
-  B00000 
+  B00000
 };
-     
+
 // SETUP
 void setup() {
   lcd.createChar(1, degree);
@@ -61,9 +61,9 @@ void setup() {
   lcd.print("   TERMO STAB   ");
   lcd.setCursor(0, 1);
   lcd.print("     V 1.0      ");
-  
+
   delay(2000);
-  
+
   display_clear();
 } // void setup()
 
@@ -76,7 +76,7 @@ void get_temperature() {
   #ifdef DEBUG
     Serial.println("DONE");
   #endif
-  
+
   temp1 = sensors.getTempCByIndex(0);
   temp2 = sensors.getTempCByIndex(1);
   delta = abs(temp1 - temp2);
@@ -93,7 +93,7 @@ void display_clear() {
 // MAIN LOOP
 void loop() {
   get_temperature();
-  
+
   // TEMP 1
   lcd.setCursor(0, 0);
   lcd.print("M");
@@ -102,7 +102,7 @@ void loop() {
   }
   lcd.print(temp1, 1);
   lcd.print("\1  ");
-  
+
   // TEMP 2
   lcd.setCursor(0, 1);
   lcd.print("M");
@@ -111,13 +111,13 @@ void loop() {
   }
   lcd.print(temp2, 1);
   lcd.print("\1  ");
-  
+
   // Delta
   lcd.setCursor(10, 0);
   lcd.print("D:");
   lcd.print(delta, 1);
   lcd.print("  ");
-  
+
   // Calc fan speed
   float fratio;
   int fspeed;
