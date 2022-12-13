@@ -1,4 +1,4 @@
-Telescope thermal stabilization
+Telescope Thermal Stabilization
 ===============
 This Arduino sketch is designed for the telescope's thermal stabilization controller. The controller (AVR) receives values from the temperature sensors of the main mirror of the telescope and the environment. Calculating the difference between the temperatures, the controller automatically changes the speed of rotation of the cooler, thus changing the cooling intensity. All readings are output on the LCD 16x4.
 
